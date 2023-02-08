@@ -43,7 +43,7 @@ class MealController extends Controller
         Meal::create([
             'name' => $request->name,
             'description' => $request->description,
-            'image' => $request->image,
+            'image' => $image,
             'prix' => $request->prix
         ]);
 
@@ -69,7 +69,7 @@ class MealController extends Controller
      */
     public function edit($id)
     {
-        //
+        dd("he");
     }
 
     /**
