@@ -38,7 +38,7 @@ class MealController extends Controller
      */
     public function store(MealStoreRequest $request)
     {
-        $image = $request->file('image')->store('public/meals');
+        $image = $request->file('image')->store('/public/meals');
 
         Meal::create([
             'name' => $request->name,
@@ -67,9 +67,9 @@ class MealController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Meal $meal)
     {
-        dd("he");
+        return view('admin.meals.edit', compact('meal'));
     }
 
     /**
