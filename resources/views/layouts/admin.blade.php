@@ -76,9 +76,10 @@
                 </div>
             </nav>
         </div>
-        <main class="m-2 p-7">
+        <main class="m-2 p-7 w-full">
             {{ $slot }}
         </main>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.js%22%3E"></script>
     </div>
 </body>
 

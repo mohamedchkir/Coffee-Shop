@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\MealStoreRequest;
+use App\Models\Meal;
 use Illuminate\Http\Request;
 
 class MealController extends Controller
@@ -14,7 +16,8 @@ class MealController extends Controller
      */
     public function index()
     {
-        return view('admin.meals.index');
+        $meals = Meal::all();
+        return view('admin.meals.index', ["meals" => $meals]);
     }
 
     /**
@@ -24,7 +27,7 @@ class MealController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.meals.create');
     }
 
     /**
@@ -33,9 +36,18 @@ class MealController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(MealStoreRequest $request)
     {
-        //
+        $image = $request->file('image')->store('public/meals');
+
+        Meal::create([
+            'name' => $request->name,
+            'description' => $request->description,
+            'image' => $request->image,
+            'prix' => $request->prix
+        ]);
+
+        return to_route('admin.meals.index');
     }
 
     /**
