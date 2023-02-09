@@ -35,8 +35,5 @@ Route::middleware(['auth', 'admin'])->name('admin.')->prefix('admin')->group(fun
     Route::resource('meals', MealController::class);
 });
 
-// Route::post('/a', function () {
-//     return "hhhhhhhhhhhhhhh";
-// })->name('a');
 
 require __DIR__ . '/auth.php';

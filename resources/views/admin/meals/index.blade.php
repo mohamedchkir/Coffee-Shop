@@ -26,6 +26,9 @@
                                 Price
                             </th>
                             <th scope="col" class="px-6 py-3">
+                                Creation Date
+                            </th>
+                            <th scope="col" class="px-6 py-3">
                                 Description
                             </th>
                             <th scope="col" class="px-6 py-3">
@@ -45,6 +48,9 @@
                                 </td>
                                 <td class="px-6 py-4">
                                     {{ $meal->prix }}
+                                </td>
+                                <td class="px-6 py-4">
+                                    {{ $meal->created_at }}
                                 </td>
                                 <td class="px-6 py-4">
                                     {{ $meal->description }}

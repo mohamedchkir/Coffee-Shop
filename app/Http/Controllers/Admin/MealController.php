@@ -7,6 +7,7 @@ use App\Http\Requests\MealStoreRequest;
 use App\Models\Meal;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Carbon\Carbon;
 
 class MealController extends Controller
 {
@@ -39,16 +40,37 @@ class MealController extends Controller
      */
     public function store(MealStoreRequest $request)
     {
-        $image = $request->file('image')->move('public/meals');
+        $request->validate([
+            'image'      => 'required|mimes:jpg,png,jpeg',
+            'name'     => 'required',
+            'description'   => 'required',
+            'prix'         => 'required',
 
-        Meal::create([
-            'name' => $request->name,
-            'description' => $request->description,
-            'image' => $image,
-            'prix' => $request->prix
+        ], [
+            'image.required' => 'Please Input Plat image',
+            'name.required' => 'Please Input Plat name',
+            'description.required' => 'Please Input Plat description',
+            'prix.required' => 'Please Input Plat price'
+
         ]);
 
-        return to_route('admin.meals.index');
+        $plat_image = $request->file('image');
+        $name_gen = hexdec(uniqid());
+        $img_ext = strtolower($plat_image->getClientOriginalExtension());
+        $img_name = $name_gen . '.' . $img_ext;
+        $location = 'img/meals/';
+        $last_img = $location . $img_name;
+        $plat_image->move($location, $img_name);
+
+        $store = Meal::insert([
+            'image' => $last_img,
+            'name' => $request->name,
+            'description' => $request->description,
+            'prix' => $request->prix,
+            'created_at' => Carbon::now(),
+        ]);
+
+        return Redirect()->back()->with('success', 'Plat Inserted Successfull');
     }
 
     /**
