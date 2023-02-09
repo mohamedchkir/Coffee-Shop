@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\MealStoreRequest;
 use App\Models\Meal;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class MealController extends Controller
 {
@@ -38,7 +39,7 @@ class MealController extends Controller
      */
     public function store(MealStoreRequest $request)
     {
-        $image = $request->file('image')->store('/public/meals');
+        $image = $request->file('image')->move('public/meals');
 
         Meal::create([
             'name' => $request->name,
@@ -79,9 +80,27 @@ class MealController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Meal $meal)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'prix' => 'required',
+            'description' => 'required',
+        ]);
+
+        $image = $meal->image;
+        if ($request->file('image')) {
+            Storage::delete($meal->image);
+            $image = $request->file('image')->move('public/meals');
+        } else {
+            $meal->update([
+                'name' => $request->name,
+                'description' => $request->description,
+                'prix' => $request->prix,
+                'image' => $image
+            ]);
+        }
+        return redirect()->route('admin.meals.index');
     }
 
     /**
@@ -90,8 +109,10 @@ class MealController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Meal $meal)
     {
-        //
+        Storage::delete($meal->image);
+        $meal->delete();
+        return to_route('admin.meals.index');
     }
 }

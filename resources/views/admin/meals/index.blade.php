@@ -50,9 +50,12 @@
                                     {{ $meal->description }}
                                 </td>
                                 <td class="px-6 py-4 text-right">
-                                    <div class="flex space-x-2">
+                                    <div class="flex space-x-2 ">
+
+
                                         <a href="{{ route('admin.meals.edit', $meal->id) }}"
-                                            class=" bg-green-500 dark:text-blue-500 ">Edit</a>
+                                            class=" bg-green-500 text-white h-15  dark:text-blue-500 ">Edit</a>
+
                                         <form action="{{ route('admin.meals.destroy', $meal->id) }}"
                                             class="px-4 py-2 bg-red-500 " method="POST"
                                             onsubmit="return confirm('are You sur?')">

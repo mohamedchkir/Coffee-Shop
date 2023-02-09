@@ -4,23 +4,12 @@
             {{ __('Dashboard') }}
         </h2>
     </x-slot>
-
-    {{-- <form action="{{ route('admin.meals.store') }}" method="post">
-        @csrf
-
-        <input type="text" name="name">
-        <input type="text" name="description">
-        <input type="text" name="prix">
-        <input type="text" name="image">
-        <button type="submit">Add</button>
-    </form> --}}
-
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <form class="bg-white" method="POST" action="{{ route('admin.meals.update', $meal->id) }}"
                 enctype="multipart/form-data">
                 @csrf
-                @method('PUT')
+                @method('PATCH')
                 <div class="mb-6">
                     <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                         Name:</label>
@@ -46,7 +35,7 @@
                     <input
                         class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
                         id="image" name="image" type="file">
-                    <p class="mt-1 text-sm text-gray-500 dark:text-gray-300" id="file_input_help">SVG, PNG, JPG or GIF
+                    <p class="mt-1 text-sm text-gray-500 dark:text-gray-300" id="">SVG, PNG, JPG or GIF
                         (MAX.
                         800x400px).</p>
                 </div>
