@@ -70,7 +70,7 @@ class MealController extends Controller
             'created_at' => Carbon::now(),
         ]);
 
-        return Redirect()->back()->with('success', 'Plat Inserted Successfull');
+        return Redirect()->route('admin.meals.index')->with('success', 'Plat Inserted Successfull');
     }
 
     /**

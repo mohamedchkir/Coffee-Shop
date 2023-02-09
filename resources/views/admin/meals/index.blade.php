@@ -40,8 +40,8 @@
                         @foreach ($meals as $meal)
                             <tr
                                 class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                                <th scope="row" class=" w-10 h-10 rounded">
-                                    <img src="{{ Storage::url($meal->image) }}">
+                                <th scope="row" class="px-5">
+                                    <img class=" w-10 h-10 rounded" src="{{ asset($meal->image) }}" />
                                 </th>
                                 <td class="px-6 py-4">
                                     {{ $meal->name }}
@@ -50,7 +50,7 @@
                                     {{ $meal->prix }}
                                 </td>
                                 <td class="px-6 py-4">
-                                    {{ $meal->created_at }}
+                                    {{ $meal->created_at->diffForHumans() }}
                                 </td>
                                 <td class="px-6 py-4">
                                     {{ $meal->description }}
@@ -60,7 +60,8 @@
 
 
                                         <a href="{{ route('admin.meals.edit', $meal->id) }}"
-                                            class=" bg-green-500 text-white h-15  dark:text-blue-500 ">Edit</a>
+                                            class=" px-4 py-2 bg-green-500 text-white h-15  dark:text-blue-500 "><button>Edit</button>
+                                        </a>
 
                                         <form action="{{ route('admin.meals.destroy', $meal->id) }}"
                                             class="px-4 py-2 bg-red-500 " method="POST"
