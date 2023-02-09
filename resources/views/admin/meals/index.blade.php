@@ -8,7 +8,8 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="flex justify-end m-2 p-2">
                 <a href="{{ route('admin.meals.create') }}"
-                    class="px-3 py-2 rounded-xl bg-blue-500 text-white hover:text-white hover:bg-blue-600"> New
+                    class="px-3 py-2 rounded-xl bg-blue-500 text-white hover:text-white hover:bg-blue-600"> <i
+                        class="fa-solid fa-plus px-2"></i>New
                     Meal</a>
             </div>
 
@@ -60,12 +61,12 @@
 
 
                                         <a href="{{ route('admin.meals.edit', $meal->id) }}"
-                                            class=" px-4 py-2 bg-green-500 text-white h-15  dark:text-blue-500 "><button>Edit</button>
+                                            class=" px-4 py-2  border-2 border-green-400 text-green-400 rounded  hover:bg-green-400 hover:text-white"><button>Edit</button>
                                         </a>
 
                                         <form action="{{ route('admin.meals.destroy', $meal->id) }}"
-                                            class="px-4 py-2 bg-red-500 " method="POST"
-                                            onsubmit="return confirm('are You sur?')">
+                                            class="px-4 py-2  border-2 border-red-500 text-red-400 rounded  hover:bg-red-500 hover:text-white"
+                                            method="POST" onsubmit="return confirm('are You sur?')">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit">Delete</button>
