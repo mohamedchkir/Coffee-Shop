@@ -114,15 +114,21 @@ class MealController extends Controller
         if ($request->file('image')) {
             Storage::delete($meal->image);
             $image = $request->file('image')->move('public/meals');
-        } else {
             $meal->update([
                 'name' => $request->name,
                 'description' => $request->description,
                 'prix' => $request->prix,
                 'image' => $image
             ]);
+            return redirect()->route('admin.meals.index');
+        } else {
+            $meal->update([
+                'name' => $request->name,
+                'description' => $request->description,
+                'prix' => $request->prix
+            ]);
+            return redirect()->route('admin.meals.index');
         }
-        return redirect()->route('admin.meals.index');
     }
 
     /**
