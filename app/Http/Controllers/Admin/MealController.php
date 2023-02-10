@@ -70,7 +70,7 @@ class MealController extends Controller
             'created_at' => Carbon::now(),
         ]);
 
-        return Redirect()->route('admin.meals.index')->with('success', 'Plat Inserted Successfull');
+        return Redirect()->route('admin.meals.index')->with('success', 'Plat inserted Successfuly');
     }
 
     /**
@@ -121,14 +121,14 @@ class MealController extends Controller
                 'prix' => $request->prix,
                 'image' => $image
             ]);
-            return redirect()->route('admin.meals.index')->with('success', 'Update successfull');
+            return redirect()->route('admin.meals.index')->with('warning', 'Update successfully');
         } else {
             $meal->update([
                 'name' => $request->name,
                 'description' => $request->description,
                 'prix' => $request->prix
             ]);
-            return redirect()->route('admin.meals.index');
+            return redirect()->route('admin.meals.index')->with('warning', 'Update successfully');
         }
     }
 
@@ -142,6 +142,6 @@ class MealController extends Controller
     {
         Storage::delete($meal->image);
         $meal->delete();
-        return to_route('admin.meals.index');
+        return to_route('admin.meals.index')->with('danger', 'Meal Deleted successfully');
     }
 }
