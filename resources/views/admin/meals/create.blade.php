@@ -5,16 +5,6 @@
         </h2>
     </x-slot>
 
-    {{-- <form action="{{ route('admin.meals.store') }}" method="post">
-        @csrf
-
-        <input type="text" name="name">
-        <input type="text" name="description">
-        <input type="text" name="prix">
-        <input type="text" name="image">
-        <button type="submit">Add</button>
-    </form> --}}
-
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <form class="bg-white" method="POST" action="{{ route('admin.meals.store') }}" enctype="multipart/form-data">
@@ -23,36 +13,46 @@
                     <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                         Name:</label>
                     <input type="text" id="name" name="name"
-                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
-                        placeholder="" required>
+                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light @error('name') border-red-500 @enderror"
+                        placeholder="">
+                    @error('name')
+                        <div class="text-sm text-red-500">{{ $message }}</div>
+                    @enderror
                 </div>
 
                 <div class="mb-6">
                     <label for="prix" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                         Price:</label>
                     <input type="number" name="prix" id="prix"
-                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
-                        required>
+                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light @error('name') border-red-500 @enderror">
+                    @error('prix')
+                        <div class="text-sm text-red-500">{{ $message }}</div>
+                    @enderror
                 </div>
 
                 <div class="mb-6">
                     <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="image">Upload
                         IMG</label>
                     <input
-                        class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                        class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 @error('name') border-red-500 @enderror"
                         id="image" name="image" type="file">
                     <p class="mt-1 text-sm text-gray-500 dark:text-gray-300" id="file_input_help">SVG, PNG, JPG or GIF
                         (MAX.
                         800x400px).</p>
+                    @error('image')
+                        <div class="text-sm text-red-500">{{ $message }}</div>
+                    @enderror
                 </div>
                 <div class="mb-6">
 
                     <label for="Description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                         Description</label>
                     <textarea id="description" name="description" rows="3"
-                        class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 @error('name') border-red-500 @enderror"
                         placeholder="Write your thoughts here..."></textarea>
-
+                    @error('description')
+                        <div class="text-sm text-red-500">{{ $message }}</div>
+                    @enderror
                 </div>
 
                 <div class="flex justify-end">

@@ -105,12 +105,13 @@ class MealController extends Controller
     public function update(Request $request, Meal $meal)
     {
         $request->validate([
-            'name' => 'required',
-            'prix' => 'required',
-            'description' => 'required',
+            'name' => 'required|string|max:255',
+            'prix' => 'required|numeric',
+            'description' => 'required|string',
         ]);
 
         $image = $meal->image;
+
         if ($request->file('image')) {
             Storage::delete($meal->image);
             $image = $request->file('image')->move('public/meals');
@@ -120,7 +121,7 @@ class MealController extends Controller
                 'prix' => $request->prix,
                 'image' => $image
             ]);
-            return redirect()->route('admin.meals.index');
+            return redirect()->route('admin.meals.index')->with('success', 'Update successfull');
         } else {
             $meal->update([
                 'name' => $request->name,
