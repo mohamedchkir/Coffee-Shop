@@ -3,7 +3,9 @@
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\MealController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Frontend\FrontMealsController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\DB;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,9 +18,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/',function ()
+{
+    // $Meals = Meal::all();
+    $Meals = DB::table('meals')->get();
+    return view('welcome',compact('Meals'));
+}
+
+);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -35,5 +42,6 @@ Route::middleware(['auth', 'admin'])->name('admin.')->prefix('admin')->group(fun
     Route::resource('meals', MealController::class);
 });
 
+// Route::get('/meals',[FrontMealsController::class,'index'])->name('meals.index');
 
 require __DIR__ . '/auth.php';
