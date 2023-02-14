@@ -1,14 +1,14 @@
 <x-guest-layout >
      <!-- Main Hero Content -->
      <div
-     class="container max-w-lg px-4 py-32 mx-auto text-left bg-center bg-no-repeat bg-cover md:max-w-none md:text-center"
-     style="background-image: url(https://images.unsplash.com/photo-1463797221720-6b07e6426c24?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=871&q=80)">
+     class="container max-w-lg px-4 py-32 mx-auto text-left bg-center bg-no-repeat bg-cover md:max-w-none md:text-center dark:bg-black"
+     style="background-image: url(https://img.freepik.com/free-photo/blur-coffee-cafe-shop-restaurant-with-bokeh-background_1421-472.jpg?w=900&t=st=1676386438~exp=1676387038~hmac=e4beedd95f3f61999b2d0430d424edc2e385a5a5a40c26c8a977a1e5f3b011c7)">
      {{-- <img src="" alt=""> --}}
      <h1
-       class="font-mono text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-50 md:text-center sm:leading-none lg:text-5xl dark:from-black dark:to-gray-50">
+       class="font-mono text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-50 md:text-center sm:leading-none lg:text-5xl dark:from-white dark:to-gray-50">
        <span class="inline md:block">Welcome To E-Coffee</span>
      </h1>
-     <div class="mx-auto mt-2 text-green-500 md:text-center lg:text-lg">
+     <div class="mx-auto mt-2 text-white md:text-center lg:text-lg">
         A coffee shop is a venue that serves coffee and other beverages, with seating and sometimes Wi-Fi. It's a social and relaxed place for drinking coffee, socializing, and working.
      </div>
 
@@ -27,21 +27,10 @@
              <h2 class="text-4xl text-green-600">Welcome</h2>
              <!-- </h1> -->
              <p class="mx-auto text-base text-gray-500 sm:max-w-md lg:text-xl md:max-w-3xl">
-               Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus nemo incidunt praesentium, ipsum
-               culpa minus eveniet, id nesciunt excepturi sit voluptate repudiandae. Explicabo, incidunt quia.
-               Repellendus mollitia quaerat est voluptas!
+                Looking for a cozy and welcoming place to enjoy a delicious cup of coffee? Look no further than our coffee shop! With our carefully crafted coffee
+                drinks made from the finest beans, you'll be sure to get your caffeine fix in style. Our shop provides a warm and inviting atmosphere where you can relax, catch up with friends or simply enjoy some me-time. We also offer a delicious range of baked goods, sandwiches, and snacks to complement your coffee. Plus, with our convenient online ordering system, you can easily grab your coffee to go and get back to your busy day.
+                Visit our website now to learn more about our menu, special promotions, and upcoming events!
              </p>
-             <div class="relative flex">
-               <a href="#_"
-                 class="flex items-center w-full px-6 py-3 mb-3 text-lg text-white bg-green-600 rounded-md sm:mb-0 hover:bg-green-700 sm:w-auto">
-                 Read More
-                 <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 ml-1" viewBox="0 0 24 24" fill="none"
-                   stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                   <line x1="5" y1="12" x2="19" y2="12"></line>
-                   <polyline points="12 5 19 12 12 19"></polyline>
-                 </svg>
-               </a>
-             </div>
            </div>
          </div>
          <div class="w-full md:w-1/2">
@@ -62,9 +51,8 @@
                class="mb-4 text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500">
                WHY CHOOSE US?</h2>
 
-             <p class="mb-4 font-medium tracking-tight text-gray-400 xl:mb-6">Lorem ipsum dolor sit amet consectetur
-               adipisicing elit. Natus hic atque magni minus aliquam, eos quam incidunt nam iusto sunt voluptates
-               inventore a veritatis doloremque corrupti. Veritatis est expedita cupiditate!</p>
+             <p class="mb-4 font-medium tracking-tight text-gray-400 xl:mb-6">Our coffee shop stands out for a number of reasons. Firstly, we pride ourselves on our high-quality coffee drinks, made from the best beans and crafted with care.
+                 We also offer a welcoming atmosphere where you can relax and enjoy your coffee</p>
              <ul>
                <li class="flex items-center py-2 space-x-4 xl:py-3">
                  <svg class="w-8 h-8 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"
@@ -117,7 +105,7 @@
              <div class="flex mb-2">
                <span class="px-4 py-0.5 text-sm bg-red-500 rounded-full text-red-50">Coffee</span>
              </div>
-             <h4 class="mb-3 text-xl font-semibold tracking-tight text-green-600 uppercase truncate     ">
+             <h4 class="mb-3 text-xl font-semibold tracking-tight text-green-600 uppercase truncate">
                 {{ $meal->name }}</h4>
              <p class="leading-normal text-gray-700 truncate">
                 {{ $meal->description }}</p>

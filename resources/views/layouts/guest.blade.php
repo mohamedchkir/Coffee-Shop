@@ -82,10 +82,9 @@
             <div class="container flex flex-wrap items-center justify-center px-4 py-8 mx-auto lg:justify-between">
               <div class="flex flex-wrap justify-center">
                 <ul class="flex items-center space-x-4 text-white">
-                  <li>Home</li>
-                  <li>About</li>
-                  <li>Contact</li>
-                  <li>Terms</li>
+                  <li class=""><a href="{{ route("login")}}">Login</a></li>
+                  <li><a href="{{ route("register")}}">Register</a></li>
+
                 </ul>
               </div>
               <div class="flex justify-center mt-4 lg:mt-0">

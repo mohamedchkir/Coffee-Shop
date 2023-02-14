@@ -21,7 +21,6 @@ use Illuminate\Support\Facades\DB;
 
 Route::get('/',function ()
 {
-    // $Meals = Meal::all();
     $Meals = DB::table('meals')->get();
     return view('welcome',compact('Meals'));
 }
@@ -40,7 +39,7 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware(['auth', 'admin'])->name('admin.')->prefix('admin')->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('index');
-    Route::get('/meals/list', function ()
+    Route::get('/admin/meals', function ()
     {
         return view('admin.meals.index');
     })->name('list');
@@ -51,6 +50,5 @@ Route::middleware(['auth', 'admin'])->name('admin.')->prefix('admin')->group(fun
 
 Route::get('/users',[CheckUserController::class,'checkRole'])->middleware('auth');
 
-// Route::get('/meals',[FrontMealsController::class,'index'])->name('meals.index');
 
 require __DIR__ . '/auth.php';

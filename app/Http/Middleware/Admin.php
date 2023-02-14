@@ -18,7 +18,6 @@ class Admin
     {
         if (!auth()->check() || !auth()->user()->is_admin) {
             abort(403);
-            // return route("dashboard");
         }
         return $next($request);
     }

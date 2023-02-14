@@ -12,8 +12,7 @@ class CheckUserController extends Controller
             return view('admin.index');
         }else {
             Auth::logout();
-            // return view('welcome');
-            return abort(401);
+            return abort(403);
 
         }
     }
