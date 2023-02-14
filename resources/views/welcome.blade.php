@@ -97,7 +97,7 @@
          </div>
          <div class="w-full px-3 mb-12 lg:w-1/2 order-0 lg:order-1 lg:mb-0"><img
              class="mx-auto sm:max-w-sm lg:max-w-full"
-             src="https://cdn.pixabay.com/photo/2020/12/31/12/28/cook-5876388_960_720.png" alt="feature image"></div>
+             src="https://cdn.pixabay.com/photo/2017/11/04/19/00/coffee-2918559_1280.jpg" alt="feature image"></div>
        </div>
      </div>
    </section>
@@ -106,10 +106,10 @@
        <h3 class="text-2xl font-bold" id="Menu">Our Menu</h3>
        <h2 class="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500">
          TODAY'S SPECIALITY</h2>
-     </div>
+     </div> <div class="container w-full px-5 py-6 mx-auto flex">
+         <div class="grid lg:grid-cols-4 gap-y-6">
      @foreach ($Meals as $meal)
-     <div class="container w-full px-5 py-6 mx-auto">
-       <div class="grid lg:grid-cols-4 gap-y-6">
+
          <div class="max-w-xs mx-4 mb-2 rounded-lg shadow-lg">
            <img class="w-full h-48" src="{{asset($meal->image)}}"
              alt="Image" />
@@ -117,9 +117,9 @@
              <div class="flex mb-2">
                <span class="px-4 py-0.5 text-sm bg-red-500 rounded-full text-red-50">Coffee</span>
              </div>
-             <h4 class="mb-3 text-xl font-semibold tracking-tight text-green-600 uppercase">
+             <h4 class="mb-3 text-xl font-semibold tracking-tight text-green-600 uppercase truncate     ">
                 {{ $meal->name }}</h4>
-             <p class="leading-normal text-gray-700">
+             <p class="leading-normal text-gray-700 truncate">
                 {{ $meal->description }}</p>
            </div>
            <div class="flex items-center justify-between p-4">
@@ -128,9 +128,9 @@
            </div>
           </div>
 
+          @endforeach
        </div>
      </div>
-     @endforeach
    </section>
    <section class="pt-4 pb-12 bg-gray-50">
      <div class="my-8 text-center">

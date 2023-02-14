@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\MealController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\CheckUserController;
 use App\Http\Controllers\Frontend\FrontMealsController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
@@ -39,8 +40,16 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware(['auth', 'admin'])->name('admin.')->prefix('admin')->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('index');
+    Route::get('/meals/list', function ()
+    {
+        return view('admin.meals.index');
+    })->name('list');
+
     Route::resource('meals', MealController::class);
+
 });
+
+Route::get('/users',[CheckUserController::class,'checkRole'])->middleware('auth');
 
 // Route::get('/meals',[FrontMealsController::class,'index'])->name('meals.index');
 
